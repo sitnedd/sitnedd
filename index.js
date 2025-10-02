@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const footer2 = document.querySelector('.footer2');
     const hr = document.querySelector('.hr');
     const background = document.querySelector('.background');
-    const themes = ['', 'dark-theme', 'white-red-theme'];
+    const themes = ['dark-theme', '', 'white-red-theme', 'purple-theme'];
     let currentThemeIndex = 0;
     let starsEnabled = true;
 
@@ -84,4 +84,49 @@ document.addEventListener('DOMContentLoaded', () => {
             createStars(); 
         }
     });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const discordText = document.getElementById('discord-text');
+    
+    if (discordText) {
+        discordText.style.cursor = 'pointer';
+        
+        discordText.addEventListener('click', function(e) {
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = 'sitnedd';
+            document.body.appendChild(tempTextArea);
+            
+            tempTextArea.select();
+            tempTextArea.setSelectionRange(0, 99999);
+            
+            document.execCommand('copy');
+            
+            document.body.removeChild(tempTextArea);
+            
+            showCopyNotification(e.clientX, e.clientY);
+        });
+    }
+    
+    function showCopyNotification(x, y) {
+        const existingNotification = document.querySelector('.copy-notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        const notification = document.createElement('div');
+        notification.className = 'copy-notification';
+        notification.textContent = 'Текст скопирован!';
+        
+        notification.style.left = (x + 0) + 'px';
+        notification.style.top = (y - 51) + 'px';
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 1500);
+    }
 });
