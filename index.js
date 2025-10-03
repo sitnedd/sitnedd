@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const footer2 = document.querySelector('.footer2');
     const hr = document.querySelector('.hr');
     const background = document.querySelector('.background');
-    const themes = ['dark-theme', '', 'white-red-theme', 'purple-theme'];
+    const themes = ['dark-theme', 'white-red-theme', 'purple-theme'];
     let currentThemeIndex = 0;
     let starsEnabled = true;
 
